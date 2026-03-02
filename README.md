@@ -62,14 +62,32 @@ pip install -r requirements.txt
 ```
 
 ### 4. Extração e Treinamento
-Para iniciar o pipeline de classificação, gere primeiro os artefatos com o arquivo CSV de características biométricas (certifique-se de que os dados e modelos estejam nas respectivas pastas):
+Para iniciar o pipeline de classificação, primeiro extraia as características biométricas rodando o script de extração. Você tem duas opções de modo (`--mode`):
 
 ```bash
-# Para extrair features geométricas puras:
+# 1. Extrair APENAS features geométricas puras (distâncias):
 python notebooks/06_feature_extraction.py --mode geo
 
-# Para treinar classificador com as features puras (Ex: XGBoost na Estratégia 1):
+# 2. Extrair features geométricas + padrão visual de pelagem (Biometria Híbrida):
+python notebooks/06_feature_extraction.py --mode both
+```
+
+Com o arquivo CSV gerado (na pasta `data/processed/`), você pode treinar os modelos de classificação. O script permite combinar livremente o algoritmo de Machine Learning (`--model`), a estratégia de áreas do corpo (`--strategy 1, 2 ou 3`), e a fonte dos dados (`--mode geo ou both`).
+
+**Exemplos de Treinamento:**
+
+```bash
+# Exemplo A: Treinar XGBoost usando apenas a área da Garupa (Estratégia 1) sem analisar pelos
 python notebooks/08_classification_id.py --model xgboost --strategy 1 --mode geo
+
+# Exemplo B: Treinar Random Forest usando Garupa + Dorso (Estratégia 3) sem analisar pelos
+python notebooks/08_classification_id.py --model random_forest --strategy 3 --mode geo
+
+# Exemplo C: Treinar Rede Neural (MLP) na área Dorsal (Estratégia 2) JUNTO com dados de pelagem
+python notebooks/08_classification_id.py --model mlp --strategy 2 --mode both
+
+# Exemplo D: Treinar LightGBM com TODAS as features (Geométricas S1+S2 + Pelagem Visual)
+python notebooks/08_classification_id.py --model lightgbm --strategy 3 --mode both
 ```
 
 ---
