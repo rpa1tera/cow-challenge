@@ -1,0 +1,16 @@
+
+Alunas: Camilla Rodrigues e Raquel Alcântara
+
+Projeto Completo: https://github.com/camillara/CowsProject/tree/main
+
+Análise das Features: https://github.com/camillara/CowsProject/blob/main/Features.ipynb
+
+Notebook Modelo Final de Classificação: https://github.com/camillara/CowsProject/blob/main/MP_RF_Cow_Chalange_.ipynb
+
+Documentação Classificação: https://github.com/camillara/CowsProject/blob/main/README_cow_keypoints_project.md
+
+
+
+
+
+
