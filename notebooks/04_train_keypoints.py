@@ -34,7 +34,7 @@ def train_model():
         name='yolov26n-cow-pose',
         exist_ok=True, 
         amp=False, 
-        # --- DATA AUGMENTATION
+        # --- DATA AUGMENTATION teste
         hsv_h=0.015, # Variação natural de tom (cor/hue)
         hsv_s=0.9,   # Variação EXTREMA de saturação (90%)
         hsv_v=0.8    # Variação EXTREMA de luminosidade/brilho (80%)
